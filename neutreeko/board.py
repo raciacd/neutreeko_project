@@ -193,7 +193,7 @@ class Board:
         #        return 0
         #    self.consecutive_plays.pop(0)
 
-        # Inicializa um dicionário para contar as ocorrências de cada estado do tabuleiro
+        # Initialize a dictionary to count the occurrences of each state of the board.
         state_counts = {}
         for pieces in self.consecutive_plays:
             # Convert the board state to an immutable representation (string or tuple) if necessary
