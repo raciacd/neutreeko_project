@@ -1,13 +1,13 @@
 import pygame
 
 class Piece:
-    def __init__(self, board, piece, player, color, size, father):
+    def __init__(self, board, piece, player, color, size, space, father):
         self.row = piece[0]
         self.col = piece[1]
         self.color = color
-        self.radius = size // 2 - 2 # Determina o tamanho do raio d
-        self.x = self.col * size + size / 2
-        self.y = self.row * size + size / 2
+        self.radius = size // 2 - 2
+        self.x = self.col * size + size / 2 +space
+        self.y = self.row * size + size / 2 + space
 
         self.piece_moves = board.piece_move(piece, player)
         self.father = (father)
@@ -19,6 +19,5 @@ class Piece:
         pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
 
     def is_clicked(self, pos):
-        # Verifica se as coordenadas do clique estão dentro do raio da peça
         distance_squared = (pos[0] - self.x) ** 2 + (pos[1] - self.y) ** 2
         return distance_squared <= self.radius ** 2
