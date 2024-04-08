@@ -89,9 +89,6 @@ class NeutreekoGame:
                 self.game_pieces = [[],[]]
                 self.players_moved = True
                 return
-            print(Board.available_moves)
-            print(self.available_pieces)
-
         
     def run_game(self):
         self.board = Board(self.initial_position)
