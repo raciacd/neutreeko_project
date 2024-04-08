@@ -89,6 +89,8 @@ class NeutreekoGame:
                 self.game_pieces = [[],[]]
                 self.players_moved = True
                 return
+            print(Board.available_moves)
+            print(self.available_pieces)
 
         
     def run_game(self):
@@ -120,10 +122,9 @@ class NeutreekoGame:
 
                     if self.board.current_player == 1:
                         self.player[0](self)
-                        self.game_pieces[0] = []
                     else:
                         self.player[1](self)  
-                        self.game_pieces[1] = [] 
+                    self.game_pieces = [[],[]]
 
                     pygame.time.wait(TIME)
                     self.players_moved = True
