@@ -1,4 +1,5 @@
 import numpy as np
+from copy import deepcopy
 SIZE = 5
 
 class Board:
@@ -25,11 +26,13 @@ class Board:
         return new_board
 
     def move(self, old_piece, new_piece):
-        piece_index = self.pieces[self.current_player-1].index(old_piece)
-        self.pieces[self.current_player-1][piece_index] = new_piece
-        self.current_board = self.create_board(self.pieces)
-        self.consecutive_plays.append(self.sorted_list(self.pieces))
-        self.winner = self.update_winner()
+        board_copy = deepcopy(self)
+        piece_index = board_copy.pieces[board_copy.current_player-1].index(old_piece)
+        board_copy.pieces[board_copy.current_player-1][piece_index] = new_piece
+        board_copy.current_board = board_copy.create_board(board_copy.pieces)
+        board_copy.consecutive_plays.append(board_copy.sorted_list(board_copy.pieces))
+        board_copy.winner = board_copy.update_winner()
+        return board_copy
 
     def available_moves(self):
         possible_moves = []

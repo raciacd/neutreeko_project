@@ -119,9 +119,10 @@ class NeutreekoGame:
                 if self.player[self.board.current_player-1]:
 
                     if self.board.current_player == 1:
-                        self.player[0](self)
+                        self.board = self.player[0](self);
                     else:
-                        self.player[1](self)   
+                        self.board = self.player[1](self)   
+
                     pygame.time.wait(TIME)
                     self.players_moved = True
                 self.update_board_screen(screen)
@@ -165,5 +166,7 @@ class NeutreekoGame:
 
 def execute_random_move(game):
     new_pieces = random.choice(game.board.available_moves())
-
-    game.board.move(new_pieces[0], new_pieces[1])
+    print("AQUIIII")
+    print('TAMANHO', len(new_pieces))
+    print('aAQUI 2')
+    return game.board.move(new_pieces[0], new_pieces[1])
